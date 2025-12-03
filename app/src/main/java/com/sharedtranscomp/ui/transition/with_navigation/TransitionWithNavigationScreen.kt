@@ -1,6 +1,7 @@
 package com.sharedtranscomp.ui.transition.with_navigation
 
 import android.R.attr.type
+import android.content.res.Configuration
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionLayout
 import androidx.compose.foundation.background
@@ -15,6 +16,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarColors
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -22,6 +25,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import com.sharedtranscomp.R
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -31,6 +35,9 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.sharedtranscomp.data.FakeDataProvider
 import com.sharedtranscomp.model.Album
+import com.sharedtranscomp.ui.theme.Purple40
+import com.sharedtranscomp.ui.theme.Purple80
+import com.sharedtranscomp.ui.theme.SharedTransitionComposeTheme
 
 
 /**
@@ -39,7 +46,7 @@ import com.sharedtranscomp.model.Album
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TransitionWithNavigationScreen (
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     onBack: ()-> Unit
 ){
 
@@ -53,6 +60,7 @@ fun TransitionWithNavigationScreen (
                 title = {
                     Text(stringResource(R.string.shared_element_transition_with_navigation))
                 },
+                colors = TopAppBarDefaults.topAppBarColors().copy(Purple40) ,
                 navigationIcon = {
                     IconButton(
                         onClick = onBack,
@@ -147,4 +155,19 @@ fun MainContent(
     }
 
 
+}
+
+//------------------------------------------------------------------//
+//Preview//
+
+@Composable
+@Preview(showBackground = true)
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+fun TransitionWithNavigationScreenPreview(){
+
+    SharedTransitionComposeTheme {
+        TransitionWithNavigationScreen(
+            onBack = {/*Click Action*/}
+        )
+    }
 }
