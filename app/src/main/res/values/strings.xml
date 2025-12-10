@@ -4,6 +4,7 @@
     <string name="set_with_navigation">SET With Navigation</string>
     <string name="album_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </string>
     <string name="shared_element_transition_with_navigation">Shared Element Transition With Navigation</string>
+    <string name="shared_element_transition_without_navigation">Shared Element Transition Without Navigation</string>
     <string name="set_without_navigation">SET Without Navigation</string>
     <string name="text_transform_animation">Text Transform Animation</string>
     <string name="animated_visibility_shared_element">Animated Visibility with SET</string>

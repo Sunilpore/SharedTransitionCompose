@@ -1,0 +1,198 @@
+package com.sharedtranscomp.ui.transition.without_navigation
+
+import android.content.res.Configuration
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.SharedTransitionLayout
+import androidx.compose.animation.SharedTransitionScope
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CornerSize
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.sharedtranscomp.R
+import com.sharedtranscomp.data.FakeDataProvider
+import com.sharedtranscomp.model.Coffee
+import com.sharedtranscomp.ui.theme.SharedTransitionComposeTheme
+import com.sharedtranscomp.ui.transition.component.InformationPanel
+
+
+/**
+ * Composable function that displays the details of a selected coffee item.
+ */
+@Composable
+fun SharedTransitionScope.CoffeeDetailScreen(
+    modifier: Modifier = Modifier,
+    coffee: Coffee,
+    onBack: () -> Unit
+){
+
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(10.dp)
+    ) {
+        CoffeeDetailsHeader(
+            cover = painterResource(id = coffee.image),
+            onBackClick = onBack
+        )
+        CoffeeDetailDescription(
+            modifier = Modifier.padding(10.dp),
+            title = coffee.name,
+            description = coffee.description
+        )
+    }
+}
+
+
+
+/**
+ * Composable function that displays the header of the coffee details view.
+ */
+@Composable
+private fun CoffeeDetailsHeader(
+    modifier: Modifier = Modifier,
+    cover : Painter,
+    onBackClick: () -> Unit
+){
+
+    Box(
+        modifier = modifier
+    ){
+        Image(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(400.dp)
+                .clip(MaterialTheme.shapes.small.copy(all = CornerSize(25.dp))),
+            painter = cover,
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+        )
+
+        Box(
+            modifier = Modifier
+                .size(50.dp)
+                .padding(10.dp)
+                .background(Color.White)
+                .clickable(onClick = onBackClick)
+        ){
+            Icon(
+                modifier = Modifier
+                    .size(50.dp)
+                    .padding(10.dp),
+                imageVector = ImageVector.vectorResource(R.drawable.ic_arrow_back),
+                tint = Color.Black,
+                contentDescription = null
+            )
+        }
+    }
+
+}
+
+
+/**
+ * Composable function that displays the description of the selected coffee item.
+ */
+@Composable
+private fun SharedTransitionScope.CoffeeDetailDescription(
+    modifier: Modifier = Modifier,
+    title:String,
+    description:String
+){
+    Column(
+        modifier = modifier
+    ) {
+
+        Text(
+            text = title,
+            fontFamily = FontFamily.Monospace,
+            fontWeight = FontWeight.ExtraBold,
+            fontSize = 26.sp,
+            color = MaterialTheme.colorScheme.onSurface
+        )
+
+        InformationPanel(
+            modifier = Modifier.padding(top = 20.dp),
+            description = description
+        )
+    }
+}
+
+//------------------------------------------------------------------//
+//Preview//
+
+@Composable
+@Preview(showBackground = true)
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+private fun CoffeeDetailScreenPreview(){
+
+    var coffee = FakeDataProvider.getCoffees()[0]
+
+    SharedTransitionComposeTheme {
+        SharedTransitionLayout {
+            CoffeeDetailScreen(
+                coffee = coffee
+            ){ /*Click Action*/ }
+        }
+    }
+}
+
+
+
+@Composable
+@Preview(showBackground = true)
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+private fun CoffeeDetailsHeaderPreview(){
+
+    SharedTransitionComposeTheme {
+        CoffeeDetailsHeader(
+            cover = painterResource(R.drawable.ic_espresso),
+            onBackClick = { /* Click Action */  }
+        )
+    }
+}
+
+
+@Composable
+@Preview(showBackground = true)
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+private fun CoffeeDetailDescriptionPreview(){
+
+    SharedTransitionComposeTheme {
+        SharedTransitionLayout {
+            CoffeeDetailDescription(
+                modifier = Modifier.fillMaxWidth(),
+                title = "Doppio",
+                description = "Espresso with double the amount of milk."
+            )
+        }
+    }
+
+}
+
+
+
+
+
+

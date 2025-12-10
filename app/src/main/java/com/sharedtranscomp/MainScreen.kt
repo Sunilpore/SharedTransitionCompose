@@ -1,6 +1,7 @@
 package com.sharedtranscomp
 
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -9,6 +10,7 @@ import androidx.navigation.compose.composable
 import com.sharedtranscomp.navigation.Screens
 import com.sharedtranscomp.ui.transition.TransitionsScreen
 import com.sharedtranscomp.ui.transition.with_navigation.TransitionWithNavigationScreen
+import com.sharedtranscomp.ui.transition.without_navigation.TransitionWithoutNavigationScreen
 
 
 @Composable
@@ -33,6 +35,15 @@ fun MainScreen (
         composable(Screens.TransitionWithNavigationScreen.route){
             TransitionWithNavigationScreen(
                 modifier = Modifier.fillMaxSize(),
+                onBack = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        composable (Screens.TransitionWithoutNavigationScreen.route) {
+            TransitionWithoutNavigationScreen(
+                modifier = Modifier.fillMaxWidth(),
                 onBack = {
                     navController.popBackStack()
                 }
