@@ -9,6 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.sharedtranscomp.navigation.Screens
 import com.sharedtranscomp.ui.transition.TransitionsScreen
+import com.sharedtranscomp.ui.transition.text_transform.TransitionWithTextTransformScreen
 import com.sharedtranscomp.ui.transition.with_navigation.TransitionWithNavigationScreen
 import com.sharedtranscomp.ui.transition.without_navigation.TransitionWithoutNavigationScreen
 
@@ -44,6 +45,14 @@ fun MainScreen (
         composable (Screens.TransitionWithoutNavigationScreen.route) {
             TransitionWithoutNavigationScreen(
                 modifier = Modifier.fillMaxWidth(),
+                onBack = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        composable (Screens.TransitionWithTextTransformScreen.route){
+            TransitionWithTextTransformScreen(
                 onBack = {
                     navController.popBackStack()
                 }
