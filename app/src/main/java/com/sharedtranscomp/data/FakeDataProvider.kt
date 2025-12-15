@@ -2,6 +2,7 @@ package com.sharedtranscomp.data
 import com.sharedtranscomp.R
 import com.sharedtranscomp.model.Album
 import com.sharedtranscomp.model.Coffee
+import com.sharedtranscomp.model.Snack
 
 
 object FakeDataProvider {
@@ -128,6 +129,17 @@ object FakeDataProvider {
                         "Ideal serving: 60ml Espresso + 180-300ml steamed milk (depending on container)",
                 image = R.drawable.ic_caffe_latte
             )
+        )
+
+
+    fun getSnacks(): List<Snack> =
+        listOf(
+            Snack(name = "Cupcake", image = R.drawable.cupcake),
+            Snack(name = "Donut", image = R.drawable.donut),
+            Snack(name = "Eclair", image = R.drawable.eclair),
+            Snack(name = "Froyo", image = R.drawable.froyo),
+            Snack(name = "Gingerbread", image = R.drawable.gingerbread),
+            Snack(name = "Honeycomb", image = R.drawable.honeycomb)
         )
 
 }
