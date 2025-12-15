@@ -4,6 +4,16 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
+apply <Transition>()
+
+class Transition: Plugin<Project> {
+
+    override fun apply(target: Project) {
+        print("This is Transition Project Plugin")
+    }
+
+}
+
 android {
     namespace = "com.sharedtranscomp"
     compileSdk {
@@ -20,9 +30,42 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    flavorDimensions += listOf<String>("paid_status", "style")
+    productFlavors {
+
+        create("free"){
+            applicationIdSuffix = ".free"
+            dimension = "paid_status"
+        }
+        create("paid"){
+            applicationIdSuffix = ".paid"
+            dimension = "paid_status"
+        }
+
+        create("india"){
+            dimension = "style"
+        }
+        create("us"){
+            dimension = "style"
+        }
+
+    }
+
+
     buildTypes {
-        release {
+        debug {
             isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+
+        create("staging"){
+            isMinifyEnabled = false
+        }
+        release {
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
