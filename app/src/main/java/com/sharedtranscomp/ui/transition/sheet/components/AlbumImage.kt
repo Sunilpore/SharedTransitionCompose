@@ -1,0 +1,38 @@
+package com.sharedtranscomp.ui.transition.sheet.components
+
+import android.content.res.Configuration
+import androidx.compose.foundation.Image
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
+import com.sharedtranscomp.R
+import com.sharedtranscomp.ui.theme.SharedTransitionComposeTheme
+
+
+
+@Composable
+fun AlbumImage(modifier: Modifier = Modifier){
+    Image(
+        modifier = modifier,
+        painter = painterResource(id = R.drawable.ic_post_image_6),
+        contentDescription = stringResource(R.string.app_name),
+        contentScale = ContentScale.Crop
+    )
+}
+
+
+//------------------------------------------------------------------//
+//Preview//
+
+@Composable
+@Preview(showBackground = true)
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+private fun AlbumImagePreview(){
+
+    SharedTransitionComposeTheme {
+        AlbumImage()
+    }
+}
