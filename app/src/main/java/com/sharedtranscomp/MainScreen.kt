@@ -10,6 +10,7 @@ import androidx.navigation.compose.composable
 import com.sharedtranscomp.navigation.Screens
 import com.sharedtranscomp.ui.transition.TransitionsScreen
 import com.sharedtranscomp.ui.transition.animated_visibility.TransitionWithAnimatedVisibilityScreen
+import com.sharedtranscomp.ui.transition.sheet.TransitionWithSheetScreen
 import com.sharedtranscomp.ui.transition.text_transform.TransitionWithTextTransformScreen
 import com.sharedtranscomp.ui.transition.with_navigation.Screen
 import com.sharedtranscomp.ui.transition.with_navigation.TransitionWithNavigationScreen
@@ -63,6 +64,15 @@ fun MainScreen (
 
         composable(Screens.TransitionWithAnimatedVisibilityScreen.route) {
             TransitionWithAnimatedVisibilityScreen(
+                onBack = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+
+        composable (Screens.TransitionWithSheetScreen.route){
+            TransitionWithSheetScreen(
                 onBack = {
                     navController.popBackStack()
                 }

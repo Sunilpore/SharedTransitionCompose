@@ -8,11 +8,11 @@
     <string name="set_without_navigation">SET Without Navigation</string>
     <string name="text_transform_animation">Text Transform Animation</string>
     <string name="animated_visibility_shared_element">Animated Visibility with SET</string>
-    <string name="sheet_component_animation">Sheet Component Animation</string>
     <string name="fab_component_animation">Fab Component Animation</string>
     <string name="about">About</string>
     <string name="emojis">Emojis</string>
     <string name="save_changes">Save changes</string>
     <string name="angel_beach">Angel Beach</string>
     <string name="trilogy">Trilogy</string>
+    <string name="sheet_component_animation">Sheet Component Animation</string>
 </resources>
