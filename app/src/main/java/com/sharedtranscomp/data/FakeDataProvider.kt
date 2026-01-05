@@ -2,6 +2,7 @@ package com.sharedtranscomp.data
 import com.sharedtranscomp.R
 import com.sharedtranscomp.model.Album
 import com.sharedtranscomp.model.Coffee
+import com.sharedtranscomp.model.Profile
 import com.sharedtranscomp.model.Snack
 
 
@@ -141,5 +142,15 @@ object FakeDataProvider {
             Snack(name = "Gingerbread", image = R.drawable.gingerbread),
             Snack(name = "Honeycomb", image = R.drawable.honeycomb)
         )
+
+    fun getFabProfiles(): List<Profile> {
+        return listOf(
+            Profile(id = 0, name = "Lily Thea", img = R.drawable.ic_profile_image_1),
+            Profile(id = 1, name = "Lily Thea", img = R.drawable.ic_profile_image_2),
+            Profile(id = 2, name = "Lily Thea", img = R.drawable.ic_profile_image_3),
+            Profile(id = 3, name = "Lily Thea", img = R.drawable.ic_profile_image_4)
+        )
+    }
+
 
 }

@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:$USER_HOME$/Library/Android/sdk/icons/material/materialsymbolsoutlined/auto_read_play/outline_auto_read_play_24.xml" />
+                                      <entry key="url" value="file:$USER_HOME$/Library/Android/sdk/icons/material/materialsymbolsoutlined/box_edit/outline_box_edit_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,7 +28,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_auto_play" />
+                            <entry key="outputName" value="ic_edit" />
                           </map>
                         </option>
                       </PersistentState>
